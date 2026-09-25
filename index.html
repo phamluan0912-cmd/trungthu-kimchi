@@ -3,64 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Minh Luân ❤️ Kim Chi | Trung Thu</title>
 
 <style>
-body{
+
+*{
 margin:0;
 padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
 height:100vh;
 overflow:hidden;
-font-family:Segoe UI,sans-serif;
-background:linear-gradient(#08142f,#1f3f9c);
+background:linear-gradient(to bottom,#07152f,#163f96);
 color:white;
 display:flex;
 justify-content:center;
 align-items:center;
+position:relative;
 }
+
+/* MOON */
+
+.moon{
+position:absolute;
+top:50px;
+left:50%;
+transform:translateX(-50%);
+width:180px;
+height:180px;
+border-radius:50%;
+background:#fff4b0;
+box-shadow:
+0 0 50px #fff4b0,
+0 0 100px #fff4b0;
+animation:moonFloat 5s infinite ease-in-out;
+}
+
+@keyframes moonFloat{
+50%{
+transform:translateX(-50%) translateY(-10px);
+}
+}
+
+/* CARD */
 
 .card{
 width:90%;
 max-width:900px;
-text-align:center;
 padding:30px;
-background:rgba(255,255,255,.1);
 border-radius:30px;
+text-align:center;
+background:rgba(255,255,255,.1);
 backdrop-filter:blur(10px);
+z-index:5;
 }
 
 h1{
-color:#FFD86B;
 font-size:42px;
+margin-bottom:20px;
+color:#FFD86B;
 }
 
 .names{
 font-size:32px;
 font-weight:bold;
-margin:20px 0;
+margin-bottom:20px;
 }
 
 .heart{
-font-size:90px;
+font-size:100px;
 animation:beat 1s infinite;
 }
 
 @keyframes beat{
-50%{transform:scale(1.2);}
+50%{
+transform:scale(1.2);
+}
+}
+
+.message{
+margin-top:20px;
+padding:20px;
+line-height:1.8;
+font-size:18px;
+background:rgba(255,255,255,.1);
+border-radius:20px;
 }
 
 button{
-padding:12px 25px;
+margin-top:20px;
+padding:14px 25px;
 border:none;
 border-radius:15px;
-background:#FFD86B;
-font-weight:bold;
 cursor:pointer;
+font-size:16px;
+font-weight:bold;
+background:#FFD86B;
 }
+
+/* STARS */
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:.3;}
+to{opacity:1;}
+}
+
+/* FLOAT HEARTS */
+
+.float-heart{
+position:absolute;
+color:#ff7096;
+animation:rise 10s linear infinite;
+}
+
+@keyframes rise{
+from{
+transform:translateY(110vh);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+.footer{
+position:absolute;
+bottom:15px;
+width:100%;
+text-align:center;
+opacity:.7;
+font-size:14px;
+}
+
 </style>
 </head>
 
 <body>
+
+<div class="moon"></div>
 
 <div class="card">
 
@@ -70,32 +165,130 @@ cursor:pointer;
 Minh Luân ❤️ Kim Chi
 </div>
 
-<div class="heart">
-❤️
+<div class="heart">❤️</div>
+
+<div class="message">
+
+Dưới ánh trăng rằm lung linh, chúc Minh Luân và Kim Chi có một mùa Trung Thu thật ấm áp, hạnh phúc và ngập tràn yêu thương.
+
+<br><br>
+
+Mong rằng mọi điều tốt đẹp nhất sẽ luôn đến với hai bạn, cùng nhau đi qua thật nhiều mùa trăng đoàn viên và giữ mãi những khoảnh khắc ngọt ngào bên nhau.
+
+<br><br>
+
+✨ Trung Thu An Lành - Hạnh Phúc - Viên Mãn ✨
+
 </div>
 
-<p>
-Dưới ánh trăng rằm lung linh, chúc Minh Luân và Kim Chi
-luôn hạnh phúc, yêu thương và đồng hành cùng nhau
-qua thật nhiều mùa Trung Thu nữa.
-</p>
-
-<br>
-
-<button onclick="playMusic()">
+<button id="musicBtn" onclick="toggleMusic()">
 🎵 Phát nhạc Thằng Cuội
 </button>
 
-<audio id="bgMusic" loop>
-  music.mp3
-</audio>
-
 </div>
 
-<script>
-function playMusic(){
-document.getElementById('bgMusic').play();
+<div class="footer">
+❤️ Minh Luân & Kim Chi ❤️
+</div>
+
+<!-- AUDIO -->
+
+<audio id="bgMusic" preload="auto" loop>
+<source src="music.mpscript>
+
+/* STARS */
+
+for(let i=0;i<150;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+let size=Math.random()*3+1;
+
+star.style.width=size+"px";
+star.style.height=size+"px";
+
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDelay=Math.random()*2+"s";
+
+document.body.appendChild(star);
+
 }
+
+/* FLOAT HEARTS */
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="float-heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=
+(20+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},10000);
+
+},500);
+
+/* MUSIC */
+
+let isPlaying=false;
+
+function toggleMusic(){
+
+let music=
+document.getElementById("bgMusic");
+
+let btn=
+document.getElementById("musicBtn");
+
+if(!isPlaying){
+
+music.volume=0.7;
+
+music.play()
+.then(()=>{
+
+isPlaying=true;
+
+btn.innerHTML=
+"⏸ Tạm dừng nhạc";
+
+})
+.catch(error=>{
+
+console.log(error);
+
+alert(
+"Không tìm thấy file music.mp3 hoặc trình duyệt chặn phát nhạc."
+);
+
+});
+
+}else{
+
+music.pause();
+
+isPlaying=false;
+
+btn.innerHTML=
+"🎵 Phát nhạc Thằng Cuội";
+
+}
+
+}
+
 </script>
 
 </body>
